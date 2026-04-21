@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'private_diary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'private_diary',
+        'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -132,7 +132,7 @@ LOGGING = {
         # Djangoが利用するロガー
         'django': {
             'handlers': ['console'],
-            'Level': 'INFO',
+            'level': 'INFO',
         },
         # diaryアプリケーションが利用するロガー
         'diary': {
